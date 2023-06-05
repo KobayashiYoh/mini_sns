@@ -2,6 +2,7 @@
 
 {% block content %}
     <a href="{% url 'post_new' %}" class="top-menu">新規投稿</a>
+    <br><br><br>
     {% for post in posts %}
     <div>
         <p>{{ post.author }}</p>

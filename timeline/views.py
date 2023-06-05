@@ -4,7 +4,7 @@ from .forms import PostForm
 from django.shortcuts import redirect
 
 def post_list(request):
-    posts = Post.objects.all()
+    posts = Post.objects.order_by('-created_at')
     return render(request, 'timeline/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):
