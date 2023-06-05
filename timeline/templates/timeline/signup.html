@@ -5,6 +5,6 @@
     <form action="{% url 'signup' %}" method="post">
     {% csrf_token %}
         {{ form.as_p }}
-        <p><input type="submit" value="登録"></p>
+        <p><input type="submit" value="登録" autocomplete="on"></p>
     </form>
 {% endblock %}
