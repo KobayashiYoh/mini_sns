@@ -1,0 +1,15 @@
+{% extends 'timeline/base.html' %}
+
+{% block content %}
+    <a href="{% url 'post_new' %}" class="top-menu">新規投稿</a>
+    <br><br><br>
+    {% for post in posts %}
+    <div>
+        <p>{{ post.author }}</p>
+        <p>{{ post.text|linebreaksbr }}</p>
+        <p>投稿日: {{ post.created_at }}</p>
+        <p><a href="{% url 'post_detail' pk=post.pk %}">詳細</a></p>
+        <br>
+    </div>
+    {% endfor %}
+{% endblock %}
