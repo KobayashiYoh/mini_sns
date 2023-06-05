@@ -1,20 +1,13 @@
-<html>
-    <head>
-        <title>ミニSNS</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">ミニSNS タイムライン</a></h1>
-        </div>
-        
-        {% for post in posts %}
-            <div>
-                <p>{{ post.author }}</p>
-                <p>{{ post.text|linebreaksbr }}</p>
-                <p>投稿日: {{ post.created_at }}</p>
-                <p>いいね: {{ post.likes_count }}</p>
-                <br>
-            </div>
-        {% endfor %}
-    </body>
-</html>
+{% extends 'timeline/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+    <div>
+        <p>{{ post.author }}</p>
+        <p>{{ post.text|linebreaksbr }}</p>
+        <p>投稿日: {{ post.created_at }}</p>
+        <p>いいね: {{ post.likes_count }}</p>
+        <br>
+    </div>
+    {% endfor %}
+{% endblock %}
