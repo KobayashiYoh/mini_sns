@@ -1,6 +1,7 @@
 {% extends 'timeline/base.html' %}
 
 {% block content %}
+    <a href="{% url 'post_new' %}" class="top-menu">新規投稿</a>
     {% for post in posts %}
     <div>
         <p>{{ post.author }}</p>
