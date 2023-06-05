@@ -3,6 +3,9 @@ from .models import Post
 from .forms import PostForm
 from django.shortcuts import redirect
 
+def signup_view(request):
+    pass
+
 def post_list(request):
     posts = Post.objects.order_by('-created_at')
     return render(request, 'timeline/post_list.html', {'posts': posts})
