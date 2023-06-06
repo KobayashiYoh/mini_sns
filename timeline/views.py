@@ -1,8 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
-from .forms import PostForm
-from django.shortcuts import redirect
-from .forms import SignupForm
+from .forms import SignupForm, LoginForm, PostForm
+from django.contrib.auth import login, logout
 
 def signup_view(request):
     if request.method == 'POST':
@@ -16,6 +15,25 @@ def signup_view(request):
         'form': form
     }
     return render(request, 'timeline/signup.html', param)
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            if user:
+                login(request, user)
+                return redirect('post_list')
+    else:
+        form = LoginForm()
+    param = {
+        'form': form,
+    }
+    return render(request, 'timeline/login.html', param)
+
+def logout_view(request):
+    logout(request)
+    return render(request, 'timeline/logout.html')
 
 def post_list(request):
     posts = Post.objects.order_by('-created_at')
