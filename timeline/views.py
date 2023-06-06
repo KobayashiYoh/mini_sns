@@ -23,6 +23,7 @@ def login_view(request):
             user = form.get_user()
             if user:
                 login(request, user)
+                return redirect('post_list')
     else:
         form = LoginForm()
     param = {
