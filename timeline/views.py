@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
 from .forms import SignupForm, LoginForm, PostForm
 from django.contrib.auth import login, logout
+from django.contrib.auth.models import User
 
 def signup_view(request):
     if request.method == 'POST':
@@ -43,7 +44,11 @@ def user_view(request):
     return render(request, 'timeline/user.html', params)
 
 def other_view(request):
-    pass
+    users = User.objects.exclude(username=request.user.username)
+    params = {
+        'users': users
+    }
+    return render(request, 'timeline/other.html', params)
 
 def post_list(request):
     posts = Post.objects.order_by('-created_at')
