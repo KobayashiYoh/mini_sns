@@ -1,0 +1,9 @@
+{% extends 'timeline/base.html' %}
+
+{% block content %}
+    <h1>ログイン中のユーザー</h1>
+    <p>{{user.username}}</p>
+    <p>連絡先：{{user.id}}</p>
+    <p>最終ログイン：{{user.last_login}}</p>
+    <p>アカウント作成日：{{user.date_joined}}</p>
+{% endblock %}

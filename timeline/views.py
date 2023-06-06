@@ -35,6 +35,12 @@ def logout_view(request):
     logout(request)
     return render(request, 'timeline/logout.html')
 
+def user_view(request):
+    pass
+
+def other_view(request):
+    pass
+
 def post_list(request):
     posts = Post.objects.order_by('-created_at')
     return render(request, 'timeline/post_list.html', {'posts': posts})
