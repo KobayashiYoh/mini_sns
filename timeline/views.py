@@ -50,6 +50,13 @@ def other_view(request):
     }
     return render(request, 'timeline/other.html', params)
 
+def profile_view(request, user_id):
+    user = User.objects.get(id=user_id)
+    params = {
+        'user': user
+    }
+    return render(request, 'timeline/profile.html', params)
+
 def post_list(request):
     posts = Post.objects.order_by('-created_at')
     return render(request, 'timeline/post_list.html', {'posts': posts})
