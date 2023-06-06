@@ -36,7 +36,11 @@ def logout_view(request):
     return render(request, 'timeline/logout.html')
 
 def user_view(request):
-    pass
+    user = request.user
+    params = {
+        'user': user
+    }
+    return render(request, 'timeline/user.html', params)
 
 def other_view(request):
     pass
