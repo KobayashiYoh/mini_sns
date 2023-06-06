@@ -2,6 +2,20 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post
 from .forms import PostForm
 from django.shortcuts import redirect
+from .forms import SignupForm
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('post_list')
+    else:
+        form = SignupForm()
+    param = {
+        'form': form
+    }
+    return render(request, 'timeline/signup.html', param)
 
 def post_list(request):
     posts = Post.objects.order_by('-created_at')
