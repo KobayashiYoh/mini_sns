@@ -17,6 +17,12 @@ def signup_view(request):
     }
     return render(request, 'timeline/signup.html', param)
 
+def login_view(request):
+    pass
+
+def logout_view(request):
+    pass
+
 def post_list(request):
     posts = Post.objects.order_by('-created_at')
     return render(request, 'timeline/post_list.html', {'posts': posts})
