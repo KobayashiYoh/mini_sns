@@ -3,9 +3,9 @@
 {% block content %}
     <h1>ユーザー一覧</h1>
     {% for user in users %}
-    <p>ユーザー名：{{user.username}}</p>
-    <p>ユーザーID：{{user.id}}</p>
-    <p>最終ログイン：{{user.last_login}}</p>
-    <p>アカウント作成日：{{user.date_joined}}</p>
+    <div>
+        <p>{{user.username}} <a href="{% url 'profile' user_id=user.id %}">@{{user.id}}</a></p>
+    </div>
+    <br>
     {% endfor %}
 {% endblock %}
