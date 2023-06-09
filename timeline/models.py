@@ -10,6 +10,7 @@ class Post(models.Model):
     text = models.TextField(max_length=200)
     likes_count = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now)
+    image = models.ImageField(upload_to='img/', null=True)
 
     def create(self):
         self.save()
