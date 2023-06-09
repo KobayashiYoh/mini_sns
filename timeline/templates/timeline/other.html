@@ -1,0 +1,11 @@
+{% extends 'timeline/base.html' %}
+
+{% block content %}
+    <h1>ユーザー一覧</h1>
+    {% for user in users %}
+    <div>
+        <p>{{user.username}} <a href="{% url 'profile' user_id=user.id %}">@{{user.id}}</a></p>
+    </div>
+    <br>
+    {% endfor %}
+{% endblock %}

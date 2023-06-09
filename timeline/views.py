@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
 from .forms import SignupForm, LoginForm, PostForm
 from django.contrib.auth import login, logout
+from django.contrib.auth.models import User
 
 def signup_view(request):
     if request.method == 'POST':
@@ -34,6 +35,27 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render(request, 'timeline/logout.html')
+
+def user_view(request):
+    user = request.user
+    params = {
+        'user': user
+    }
+    return render(request, 'timeline/user.html', params)
+
+def other_view(request):
+    users = User.objects.exclude(username=request.user.username)
+    params = {
+        'users': users
+    }
+    return render(request, 'timeline/other.html', params)
+
+def profile_view(request, user_id):
+    user = User.objects.get(id=user_id)
+    params = {
+        'user': user
+    }
+    return render(request, 'timeline/profile.html', params)
 
 def post_list(request):
     posts = Post.objects.order_by('-created_at')
