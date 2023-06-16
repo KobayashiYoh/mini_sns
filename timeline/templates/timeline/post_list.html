@@ -5,6 +5,7 @@
     <div>
         <p>{{ post.author }}</p>
         <p>{{ post.text|linebreaksbr }}</p>
+        <img src="{{ post.image.url }}" alt="投稿画像" width="300">
         <p>投稿日: {{ post.created_at }}</p>
         <p><a href="{% url 'post_delete' pk=post.pk %}">削除</a></p>
         <p><a href="{% url 'post_detail' pk=post.pk %}">詳細</a></p>
